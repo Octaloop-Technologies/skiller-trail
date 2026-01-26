@@ -78,7 +78,7 @@ const TrialSignup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#4F5BD5] via-[#3D47B8] to-[#2B35A0] flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-lg flex-col gap-4! flex">
         {/* Card */}
         <div className="bg-white/15 backdrop-blur-md rounded-3xl p-8 lg:p-12 space-y-10 border border-white/20 shadow-xl">
           {/* Header */}
@@ -105,71 +105,89 @@ const TrialSignup = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleStartTrial} className="space-y-6">
-            <div className="space-y-4">
+          <form onSubmit={handleStartTrial} className="space-y-8">
+            <div className="space-y-5">
               {/* Email */}
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <div className="relative group">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 focus:ring-offset-transparent shadow-sm transition-all duration-200 hover:shadow-md"
+                  required
                 />
               </div>
 
               {/* Full Name */}
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <div className="relative group">
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
                 <input
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Full name"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 focus:ring-offset-transparent shadow-sm transition-all duration-200 hover:shadow-md"
+                  required
                 />
               </div>
 
               {/* Password */}
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+              <div className="relative group">
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-pink-500 transition-colors" size={20} />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password (min. 8 characters)"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-offset-2 focus:ring-offset-transparent shadow-sm transition-all duration-200 hover:shadow-md"
+                  required
+                  minLength={8}
                 />
               </div>
             </div>
 
             {/* Error */}
             {error && (
-              <p className="text-red-300 text-sm text-center">
-                {error}
-              </p>
+              <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-4 backdrop-blur-sm">
+                <p className="text-red-100 text-sm text-center font-medium">
+                  {error}
+                </p>
+              </div>
             )}
 
             {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-4 rounded-xl text-white font-semibold text-lg transition-all ${isSubmitting
-                ? 'bg-pink-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 active:scale-[0.98]'
+              className={`w-full py-4 rounded-xl text-white font-semibold text-lg transition-all duration-200 shadow-lg ${isSubmitting
+                ? 'bg-pink-400 cursor-not-allowed opacity-70'
+                : 'bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 hover:shadow-xl active:scale-[0.98] transform'
                 }`}
             >
-              {isSubmitting ? 'Processing…' : 'Start free trial'}
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Processing…
+                </span>
+              ) : (
+                'Start free trial'
+              )}
             </button>
 
             {/* Footer */}
-            <div className="text-center text-white/70 text-sm space-x-2">
-              <span>Powered by Stripe</span>
-              <span>•</span>
-              <a href="#" className="hover:text-white">Terms</a>
-              <span>•</span>
-              <a href="#" className="hover:text-white">Privacy</a>
+            <div className="pt-4 border-t border-white/10">
+              <div className="flex items-center justify-center gap-3 text-white/70 text-sm">
+                <span className="text-white/80 font-medium">Powered by Stripe</span>
+                <span className="text-white/40">•</span>
+                <a href="#" className="hover:text-white transition-colors underline-offset-2 hover:underline">Terms</a>
+                <span className="text-white/40">•</span>
+                <a href="#" className="hover:text-white transition-colors underline-offset-2 hover:underline">Privacy</a>
+              </div>
             </div>
           </form>
         </div>
