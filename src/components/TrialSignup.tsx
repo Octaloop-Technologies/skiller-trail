@@ -55,14 +55,13 @@ const TrialSignup = () => {
       console.log(data);
       // Success
       if (data?.code === 200 || data?.status === 'success') {
-        alert('Trial started successfully!');
-
-
-
+        // Redirect to payment confirmation page
+        window.location.href = 'https://theskillerapp.com/payment-confirmation';
         // Reset form
         setEmail('');
         setFullName('');
         setPassword('');
+        
       } else {
         alert(data?.message ?? "Unknown error occurred")
       }
