@@ -56,7 +56,7 @@ const TrialSignup = () => {
       // Success
       if (data?.code === 200 || data?.status === 'success') {
         // Redirect to payment confirmation page
-        window.location.href = 'https://theskillerapp.com/payment-confirmation';
+        window.location.href = 'https://skiller.app/payment-confirmation';
         // Reset form
         setEmail('');
         setFullName('');
@@ -94,9 +94,9 @@ const TrialSignup = () => {
               60 days free
             </p>
 
-            <p className="text-white/90 text-base">
+            {/* <p className="text-white/90 text-base">
               Then $0.00 per month starting February 27, 2026.
-            </p>
+            </p> */}
 
             <p className="text-white/70 text-sm leading-relaxed">
               No credit card required. Cancel anytime after your trial.
@@ -183,9 +183,9 @@ const TrialSignup = () => {
               <div className="flex items-center justify-center gap-3 text-white/70 text-sm">
                 <span className="text-white/80 font-medium">Powered by Stripe</span>
                 <span className="text-white/40">•</span>
-                <a href="https://account.theskillerapp.com/terms" className="hover:text-white transition-colors underline-offset-2 hover:underline">Terms</a>
+                <a href="https://account.skiller.app/terms" className="hover:text-white transition-colors underline-offset-2 hover:underline">Terms</a>
                 <span className="text-white/40">•</span>
-                <a href="https://account.theskillerapp.com/privacy" className="hover:text-white transition-colors underline-offset-2 hover:underline">Privacy</a>
+                <a href="https://account.skiller.app/privacy" className="hover:text-white transition-colors underline-offset-2 hover:underline">Privacy</a>
               </div>
             </div>
           </form>
