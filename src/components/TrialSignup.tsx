@@ -183,9 +183,9 @@ const TrialSignup = () => {
               <div className="flex items-center justify-center gap-3 text-white/70 text-sm">
                 <span className="text-white/80 font-medium">Powered by Stripe</span>
                 <span className="text-white/40">•</span>
-                <a href="https://skiller.app/terms-of-use" className="hover:text-white transition-colors underline-offset-2 hover:underline">Terms</a>
+                <a href="https://skiller.app/terms-of-use" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline-offset-2 hover:underline">Terms</a>
                 <span className="text-white/40">•</span>
-                <a href="https://skiller.app/privacy-policy" className="hover:text-white transition-colors underline-offset-2 hover:underline">Privacy</a>
+                <a href="https://skiller.app/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors underline-offset-2 hover:underline">Privacy</a>
               </div>
             </div>
           </form>
