@@ -56,7 +56,7 @@ const TrialSignup = () => {
       // Success
       if (data?.code === 200 || data?.status === 'success') {
         // Redirect to payment confirmation page
-        window.location.href = 'https://skiller.app/payment-confirmation';
+        window.location.href = 'https://download.skiller.app/';
         // Reset form
         setEmail('');
         setFullName('');
